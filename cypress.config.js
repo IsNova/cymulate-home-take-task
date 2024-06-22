@@ -4,8 +4,8 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: "https://app.cymulate.com",
     env: {
-      username: "candidate_user@cymulate1.com",
-      password: "ZzAa!@#$4321",
+      username: "username",
+      password: "password",
     },
     testIsolation: false,
     setupNodeEvents(on, config) {
