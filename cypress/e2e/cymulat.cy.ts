@@ -34,21 +34,20 @@ describe('template spec', () => {
   })
 
   it('Should print the first 3 records', function () {
-    cy.get('.TableInner__StyledTableInner-sc-vzmrh1-0') // Target the table container
-      .find('div[data-row-id]') // Find all rows
+    cy.get('.TableInner__StyledTableInner-sc-vzmrh1-0')
+      .find('div[data-row-id]')
       .each(($row, index) => {
-        if (index < 3) { // Process only the first 3 rows
-          const assessmentIdSection: any = $row.find('div[test-data-id="assessmentID"]'); // Find assessment ID section
+        if (index < 3) {
+          const assessmentIdSection: any = $row.find('div[test-data-id="assessmentID"]');
           cy.log("assessmentIdSection", assessmentIdSection)
 
           if (assessmentIdSection.length > 0) {
-            // Assuming the assessment ID itself is within a specific element:
             const assessmentIdElement = assessmentIdSection.find('[test-id="assesementId"]');
-            const assessmentId = assessmentIdElement.text().trim(); // Extract assessment ID
+            const assessmentId = assessmentIdElement.text().trim();
 
             cy.log(`Row ${index + 1} assessmentId: ${assessmentId}`);
           } else {
-            cy.log(`Row ${index + 1} - Assessment ID section not found`); // Handle missing section
+            cy.log(`Row ${index + 1} - Assessment ID section not found`);
           }
         }
       });
